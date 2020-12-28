@@ -34,7 +34,7 @@ sub MAIN() {
             my $c = $message.content;
             given $c {
                 when s/^'!doc'// {
-                    my ($command, $arg) = $message.content.split(/ \s+ /);
+                    my ($command, $arg) = $c.split(/ \s+ /);
                     if $command eq "!docs?" and $arg {
                         if %documentation{$arg}:exists {
                             my @docs = %documentation{$arg};
