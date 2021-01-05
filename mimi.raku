@@ -17,7 +17,7 @@ sub MAIN() {
         whenever $discord.messages -> $message {
             my $c = $message.content;
             given $c {
-                when / ^ '!' docs? / {
+                when / ^ '!d' [ oc s? ]? >> / {
                     my ($command, $arg) = $c.split(/ \s+ /);
                     if $arg {
                         if %Mimi::Documentation::documentation{$arg}:exists {
