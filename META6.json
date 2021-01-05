@@ -1,0 +1,26 @@
+{
+    "name": "Mimi",
+    "description": "Custom Discord helper bot for the official MyBB Discord server.",
+    "version": "0.1",
+    "perl": "6.d",
+    "authors": [
+        "Kane 'kawaii' Valentine <kane@cute.im>"
+    ],
+    "auth": "github:kawaii",
+    "depends": [
+        "API::Discord",
+        "JSON::Fast"
+    ],
+    "provides": {
+        "Mimi::Configuration": "lib/Mimi/Configuration.rakumod",
+        "Mimi::Documentation": "lib/Mimi/Documentation.rakumod"
+    },
+    "support": {
+        "bugtracker": "https://github.com/kawaii/raku-mimi/issues",
+        "source": "https://github.com/kawaii/raku-mimi"
+    },
+    "license": "BSD-3-Clause",
+    "source-url": "git://git@github.com:kawaii/raku-mimi.git",
+    "repo-type": "git",
+    "source-type": "git"
+}
