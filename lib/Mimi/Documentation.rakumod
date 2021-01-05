@@ -11,10 +11,10 @@ our %documentation is export =
             { name => 'Datacache', value => '/1.8/development/datacache/' },
         ],
         'cookies' => [
-            { name => 'Cookies', value => '/1.8/development/cookies/' }
+            { name => 'Cookies', value => '/1.8/development/cookies/' },
         ],
         'install' => [
-            { name => 'Install', value => '/1.8/install/' }
+            { name => 'Install', value => '/1.8/install/' },
         ],
         'security' => [
             { name => 'Using Two-Factor Authentication with MyBB', value => '/1.8/administration/security/2fa/' },
@@ -24,7 +24,7 @@ our %documentation is export =
             { name => 'Security Incident Response & Recovery', value => '/1.8/administration/security/recovery/' },
         ],
         'spam' => [
-            { name => 'Spam', value => '/1.8/administration/spam/' }
+            { name => 'Spam', value => '/1.8/administration/spam/' },
         ],
 ;
 
