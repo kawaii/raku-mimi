@@ -39,6 +39,5 @@ sub construct-doc-embed(:$topic) is export {
                   description => "Hi! Here's all the documentation we have relating to `$topic`;",
                   :@fields,
     ;
-    say %payload;
     return %payload;
 }
