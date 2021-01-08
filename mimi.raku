@@ -18,13 +18,13 @@ sub MAIN() {
             my $c = $message.content;
             given $c {
                 when / ^ '!d' [ oc s? ]? >> / {
-                    my ($command, $arg) = $c.split(/ \s+ /);
-                    if $arg {
-                        if %Mimi::Documentation::documentation{$arg}:exists {
-                            my %payload = construct-doc-embed(:topic($arg));
+                    my ($command, $query) = $c.split(/ \s+ /);
+                    if $query {
+                        if %Mimi::Documentation::documentation{$query}:exists {
+                            my %payload = construct-doc-embed(:topic($query));
                             $message.channel.send-message(embed => %payload);
                         } else {
-                            $message.channel.send-message("I couldn't find any documentation relating to `$arg`, sorry.");
+                            $message.channel.send-message("I couldn't find any documentation relating to `$query`, sorry.");
                         }
                     } else {
                         $message.channel.send-message('https://docs.mybb.com/');
