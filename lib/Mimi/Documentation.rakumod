@@ -29,11 +29,11 @@ our %documentation is export =
 ;
 
 sub construct-doc-embed(:$topic) is export {
-    my @fields = %documentation{$topic}.map( { %( name => $^a<name>, value => %config<base-url> ~ $^a<value> ) } );
+    my @fields = %documentation{$topic}.map( { %( name => $^a<name>, value => %config<doc-base-url> ~ $^a<value> ) } );
     my %payload = author => {
-                    icon_url => 'https://pbs.twimg.com/profile_images/1051729621190922241/WNPhWdQ-_400x400.jpg',
+                    icon_url => %config<site-base-url> ~ '/assets/images/logomark-white-on-blue-400h.png',
                     name => "{$topic.tc} Documentation",
-                    url => "%config<base-url>",
+                    url => "%config<doc-base-url>",
                   },
                   color => 32720,
                   description => "Hi! Here's all the documentation we have relating to `$topic`;",
