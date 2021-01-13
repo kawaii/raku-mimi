@@ -9,11 +9,16 @@
     "auth": "github:kawaii",
     "depends": [
         "API::Discord",
-        "JSON::Fast"
+        "Cache::Async",
+        "Cro::HTTP::Client",
+        "JSON::Fast",
+        "YAMLish"
     ],
     "provides": {
         "Mimi::Configuration": "lib/Mimi/Configuration.rakumod",
-        "Mimi::Documentation": "lib/Mimi/Documentation.rakumod"
+        "Mimi::Documentation": "lib/Mimi/Documentation.rakumod",
+        "Mimi::Team": "lib/Mimi/Team.rakumod",
+        "Mimi::Team::Jaccard": "lib/Mimi/Team/Jaccard.rakumod"
     },
     "support": {
         "bugtracker": "https://github.com/kawaii/raku-mimi/issues",
