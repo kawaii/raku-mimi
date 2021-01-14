@@ -33,9 +33,20 @@ sub avatar-url(:%member) {
 sub member-fields(:%member) {
     my @fields;
 
+    sub role-map(@roles) {
+        @roles.map({%config<discord-team-roles>{$_}}).map({"<@&{$_}>"}).join(', ')
+    }
+
     if %member<github> { @fields.append(${ name => 'GitHub', value => "https://github.com/{%member<github>}", inline => True }) }
     if %member<twitter> { @fields.append(${ name => 'Twitter', value => "https://twitter.com/{%member<twitter>}", inline => True }) }
     if %member<pgp_fingerprint> { @fields.append(${ name => 'PGP Fingerprint', value => "[{ %member<pgp_fingerprint> }]({ %member<pgp_link> })" }) }
+
+    if %member<role_memberships><lead> {
+        @fields.append(${ name => 'Team Leader', value => ~role-map(%member<role_memberships><lead>), inline => True })
+    }
+    if %member<role_memberships><standard> {
+        @fields.append(${ name => 'Team Member', value => ~role-map(%member<role_memberships><standard>), inline => True })
+    }
 
     return @fields;
 }
