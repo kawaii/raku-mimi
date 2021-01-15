@@ -64,7 +64,7 @@ sub construct-team-member-embed(:$username) is export {
                   },
                   color => 32720,
                   :@fields,
-                  description => 'test message',
+                  description => %member<name> || 'MyBB Team Member',
     ;
     return %payload;
 }
