@@ -51,6 +51,12 @@ sub member-fields(:%member) {
     return @fields;
 }
 
+sub member-flag($locale) {
+    return $locale.comb.map({
+        uniparse("Regional Indicator Symbol Letter $_")
+    }).join;
+}
+
 sub construct-team-member-embed(:$username) is export {
     my %member = %team{$username};
     my @fields = member-fields(:%member);
@@ -64,7 +70,7 @@ sub construct-team-member-embed(:$username) is export {
                   },
                   color => 32720,
                   :@fields,
-                  description => %member<name> || 'MyBB Team Member',
+                  description => (%member<name> || 'MyBB Team Member') ~ (%member<locale> ?? ' ' ~ ~member-flag(%member<locale>) !! '');
     ;
     return %payload;
 }
