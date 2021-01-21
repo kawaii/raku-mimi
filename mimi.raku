@@ -23,7 +23,7 @@ sub MAIN() {
                 when / ^ '!d' [ oc s? ]? >> / {
                     my ($command, $query) = $c.split(/ \s+ /);
                     if $query {
-                        if $query ~~ 'list' {
+                        if $query eq 'list' {
                             my @list = %Mimi::Documentation::documentation.keys;
                             $message.channel.send-message("`@list.join("`, `")`");
                         } elsif %Mimi::Documentation::documentation{$query}:exists {
