@@ -1,0 +1,33 @@
+{
+  "description": "Hello! I'm Mimi, MyBB's Discord Helper bot. I provide a variety of functions accessed via commands. Read the documentation below to find out how to get started.",
+  "url": "https://discordapp.com",
+  "color": 32720,
+  "thumbnail": {
+    "url": "https://mybb.com/assets/images/logomark-white-on-blue-400h.png"
+  },
+  "author": {
+    "name": "Mimi",
+    "url": "https://github.com/kawaii/raku-mimi",
+    "icon_url": "https://mybb.com/assets/images/logomark-white-on-blue-400h.png"
+  },
+  "fields": [
+    {
+      "name": "📄 !d, !doc and !docs",
+      "value": "You can use the `!docs` command to find relevant help documentation pages from the MyBB Documentation site.\n\nThis command operates on a keyword system; so `!docs install` for example will bring up any help documents which we've pre-tagged with the `install` keyword.\n\nNot sure what you're looking for? Try the `!docs list` command in order to get a list of keywords in my database.\n```Usage: !docs <keyword> | !docs list\nExample: !docs security```"
+    },
+    {
+      "name": "💙 !t and !team",
+      "value": "You can view basic information about the team behind MyBB by using the `!team` command. This command attempts to make a decent guess at who you're trying to find and returns the data we have about them.\n```Usage: !team <member>\nExample: !team euan```"
+    },
+    {
+      "name": "ℹ️ !help",
+      "value": "Displays this dialogue.",
+      "inline": true
+    },
+    {
+      "name": "⏱️ !uptime",
+      "value": "Displays my uptime this session.",
+      "inline": true
+    }
+  ]
+}

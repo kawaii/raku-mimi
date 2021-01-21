@@ -3,6 +3,7 @@
 use API::Discord;
 use Mimi::Configuration;
 use Mimi::Documentation;
+use Mimi::Help;
 use Mimi::Team;
 use Mimi::Team::Jaccard;
 
@@ -22,7 +23,10 @@ sub MAIN() {
                 when / ^ '!d' [ oc s? ]? >> / {
                     my ($command, $query) = $c.split(/ \s+ /);
                     if $query {
-                        if %Mimi::Documentation::documentation{$query}:exists {
+                        if $query ~~ 'list' {
+                            my @list = %Mimi::Documentation::documentation.keys;
+                            $message.channel.send-message("`@list.join("`, `")`");
+                        } elsif %Mimi::Documentation::documentation{$query}:exists {
                             my %payload = construct-doc-embed(:topic($query));
                             $message.channel.send-message(embed => %payload);
                         } else {
@@ -49,6 +53,9 @@ sub MAIN() {
                             }
                         }
                     }
+                }
+                when / ^ '!help' $ / {
+                    $message.channel.send-message(embed => %Mimi::Help::help);
                 }
             }
         }
