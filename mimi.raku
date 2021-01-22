@@ -16,6 +16,8 @@ sub MAIN() {
     $discord.connect;
     await $discord.ready;
 
+    my $start = DateTime.now;
+
     react {
         whenever $discord.messages -> $message {
             my $c = $message.content;
@@ -56,6 +58,14 @@ sub MAIN() {
                 }
                 when / ^ '!help' $ / {
                     $message.channel.send-message(embed => %Mimi::Help::help);
+                }
+                when / ^ '!uptime' $ / {
+                    my $uptime = DateTime.now - $start;
+                    my ($second, $minute, $hour) = $uptime.round.polymod(60, 60, 24);
+                    my $duration = (:$hour, :$minute, :$second).toggle(:off, *.value > 0).map({
+                        "{.value} {.key ~ ('s' if .value ≠ 1)}"
+                    }).join(', ');
+                    $message.channel.send-message("I've been online for $duration this session.");
                 }
             }
         }
