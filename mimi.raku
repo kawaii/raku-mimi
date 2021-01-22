@@ -61,8 +61,8 @@ sub MAIN() {
                 }
                 when / ^ '!uptime' $ / {
                     my $uptime = DateTime.now - $start;
-                    my ($second, $minute, $hour) = $uptime.round.polymod(60, 60, 24);
-                    my $duration = (:$hour, :$minute, :$second).toggle(:off, *.value > 0).map({
+                    my ($second, $minute, $hour, $day) = $uptime.round.polymod(60, 60, 24, 24);
+                    my $duration = (:$day, :$hour, :$minute, :$second).toggle(:off, *.value > 0).map({
                         "{.value} {.key ~ ('s' if .value ≠ 1)}"
                     }).join(', ');
                     $message.channel.send-message("I've been online for $duration this session.");
